@@ -43,7 +43,7 @@ class Car {
       this.invincibleCount++
 
       if (this.invincibleCount % 10 === 0) this.invincibleFlag = !this.invincibleFlag
-      if (this.invincibleFlag) ctx.globalAlpha = 0.8
+      if (this.invincibleFlag) ctx.globalAlpha = 0.7
     }
     ctx.drawImage(this._image, this.x, this.y, this.w, this.h)
     ctx.globalAlpha = 1
