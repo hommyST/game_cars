@@ -8,3 +8,19 @@
   color-scheme: dark;
 }
 
+main {
+  max-width: 1000px;
+  margin: 16px auto;
+  display: flex;
+  gap: 16px;
+}
+
+.choose_player img {
+  cursor: pointer;
+  width: 43px;
+  filter: blur(1px);
+
+  &:hover {
+    filter: revert;
+  }
+}

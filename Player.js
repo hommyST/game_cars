@@ -2,7 +2,7 @@ class Player {
   constructor(car) {
     this.car = car
     this.score = 0
-    this.life = 100
+    this.life = 1000
     this.invincibility = 250
     this.maxInvincibility = 250
     this.keysPressed = {}
@@ -60,6 +60,7 @@ class Player {
       })
     })
     window.addEventListener('gamepaddisconnected', () => {
+      // FIXME
       currentGamepad.offAll()
       currentGamepad = null
     })

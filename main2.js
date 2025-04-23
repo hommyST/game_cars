@@ -1,3 +1,4 @@
+const choosePlayerElement = document.querySelector('.choose_player')
 /** @type {HTMLCanvasElement} */
 const canvas = document.querySelector('#canvas1')
 const ctx = canvas.getContext('2d')
@@ -20,7 +21,9 @@ void function setup() {
   canvas.height = 550
 
   const playerImage = new Image()
-  playerImage.src = './images/playerCar.png'
+  // playerImage.src = './images/playerCar.png'
+  playerImage.src = './images/playerCar4.png'
+  // playerImage.src = './images/car4.png'
 
   player.car = new Car(132, 440, playerImage, 3)
 
@@ -31,6 +34,7 @@ void function setup() {
   addEnemy(1)
   addEnemy(2)
   draw()
+  fillPlayerChoices()
 }()
 
 
@@ -60,6 +64,7 @@ function draw() {
         break
       }
 
+      // TODO вынести из этого ИФА
       for (const other of enemies) {
         if (other === enemy) continue
         if (other.hit(enemy)) {
@@ -169,6 +174,22 @@ function showUI() {
   ctx.textAlign = 'center'
   ctx.textBaseline = 'middle'
   ctx.fillText(player.score + '', canvas.width - 50, 40)
+}
+
+function fillPlayerChoices() {
+  for (let i = 1; i <= 4; i++) {
+    const num = i === 1 ? '' : i
+    const img = document.createElement('img')
+    img.src = `./images/playerCar${num}.png`
+    choosePlayerElement.append(img)
+  }
+
+  choosePlayerElement.addEventListener('click', ({target}) => {
+    if (!target.src) return
+    const playerImage = new Image()
+    playerImage.src = target.src
+    player.car.image = playerImage
+  })
 }
 
 
